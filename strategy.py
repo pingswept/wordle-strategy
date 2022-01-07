@@ -13,4 +13,6 @@ print("Letter occurrences in solution set")
 
 print(Counter(''.join(sol)))
 
+print("Plurals are largely omitted.")
+
 print([w for w in sol if (w[4] == 's')])
