@@ -35,3 +35,6 @@ print([w for w in sol if (w[4] == 's')])
 
 ratio_results = [(ratio, evaluateGYRatio(ratio)) for ratio in [1.2, 1.3, 1.4, 1.5, 1.6, 1.7]]
 print ratio_results
+
+def stillValid(letter, pos):
+        return [guess for guess in all if (letter in guess) and (guess[pos] is not letter) 
