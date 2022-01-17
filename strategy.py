@@ -12,7 +12,12 @@ def checkYellow(guess, solution):
 	return(y)
 
 def getAverageColors(guess, green_multiplier):
-    return sum([checkYellow(guess, solution) + green_multiplier * checkGreen(guess, solution) for solution in sol])
+	return sum([checkYellow(guess, solution) + green_multiplier * checkGreen(guess, solution) for solution in sol])
+
+def evaluateGYRatio(ratio):
+	pairs = [(guess, getAverageColors(guess, ratio)) for guess in all if len(''.join(set(guess))) == 5]
+	pairs.sort(key=lambda x:x[1])
+        return pairs[-100:]
 
 print("{} valid solutions".format(len(sol)))
 print("{} words that aren't valid solutions, but can still be guessed".format(len(rare)))
@@ -28,8 +33,5 @@ print("Plurals are largely omitted.")
 
 print([w for w in sol if (w[4] == 's')])
 
-pairs = [(guess, getAverageColors(guess, 1.5)) for guess in all if len(''.join(set(guess))) == 5]
-
-pairs.sort(key=lambda x:x[1])
-
-print(pairs)
+ratio_results = [(ratio, evaluateGYRatio(ratio)) for ratio in [1.2, 1.3, 1.4, 1.5, 1.6, 1.7]]
+print ratio_results
